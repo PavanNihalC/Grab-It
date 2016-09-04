@@ -37,6 +37,13 @@ import static android.Manifest.permission.READ_CONTACTS;
 /**
  * A login screen that offers login via email/password.
  */
+
+/*
+*
+* Login Activity template is too confusing. Abandoning this branch.
+*
+*/
+
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
     /**

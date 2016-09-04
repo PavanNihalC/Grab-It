@@ -20,11 +20,12 @@
         android:text="Logged in as" />
 
     <TextView
+        android:id="@+id/side_menu_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20dp"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="Pavan Nihal Chelikani"
+        android:text="Guest"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
 

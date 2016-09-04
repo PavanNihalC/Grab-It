@@ -1,5 +1,8 @@
 package com.lagdroidstudios.android.grabit;
 
+import android.content.ClipData;
+import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,9 +15,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    public static boolean isLoggedIn = false;
+    Menu sideMenu;
+    SQLiteDatabase MiscDB ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +64,7 @@ public class MainActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+        sideMenu = menu;
         return true;
     }
 
@@ -93,11 +102,22 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_settings) {
 
         } else if (id == R.id.nav_login){
-
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void checkLoginState()
+    {
+        MenuItem login_menu_item = sideMenu.findItem(R.id.nav_login);
+        TextView side_menu_username = (TextView) findViewById(R.id.side_menu_username);
+        if(true==isLoggedIn)
+        {
+            login_menu_item.setTitle("Sign Out");
+            side_menu_username.setText("Pavan Nihal Chelikani");
+        }
     }
 }
